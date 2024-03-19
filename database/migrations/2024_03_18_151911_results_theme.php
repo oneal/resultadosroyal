@@ -13,7 +13,7 @@ class ResultsTheme extends Migration
      */
     public function up()
     {
-        Schema::create('results_theme', function (Blueprint $table) {
+        Schema::create('results_themes', function (Blueprint $table) {
             $table->increments('id');
             $table->text('theme')->nullable();
             $table->text('description')->nullable();
@@ -28,6 +28,6 @@ class ResultsTheme extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results_theme');
+        Schema::dropIfExists('results_themes');
     }
 }

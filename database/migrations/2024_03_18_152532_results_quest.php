@@ -13,7 +13,7 @@ class ResultsQuest extends Migration
      */
     public function up()
     {
-        Schema::create('results_quest', function (Blueprint $table) {
+        Schema::create('results_quests', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('year_id')->unsigned();
             $table->integer('theme_id')->unsigned();
@@ -33,6 +33,6 @@ class ResultsQuest extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results_quest');
+        Schema::dropIfExists('results_quests');
     }
 }

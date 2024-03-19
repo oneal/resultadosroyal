@@ -13,7 +13,7 @@ class ResultsYear extends Migration
      */
     public function up()
     {
-        Schema::create('results_year', function (Blueprint $table) {
+        Schema::create('results_years', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('year')->nullable();
             $table->text('img')->nullable();
@@ -29,6 +29,6 @@ class ResultsYear extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('results_year');
+        Schema::dropIfExists('results_years');
     }
 }
