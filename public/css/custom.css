@@ -1,0 +1,18 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+
+.color-with-slider {
+    color: var(--cnvs-white)
+}
+
+.slider-caption h2 {
+    color: var(--cnvs-white) !important;
+}
+
+.slider-caption h2 > span {
+    color: var(--cnvs-white) !important;
+}

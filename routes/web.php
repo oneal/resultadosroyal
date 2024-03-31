@@ -13,11 +13,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\Web\Home::class, 'index'])
+->name('home.index');
+
+Route::get('/aviso-legal', function (){
+    return view('web.legal-warning');
+})->name('home.legal.warning');
+
+Route::get('/politica-privacidad', function (){
+    return view('web.privacy-policy');
+})->name('home.privacy.policy');
+
+Route::get('/politica-cookies', function (){
+    return view('web.cookie-policy');
+})->name('home.cookie.policy');
 
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::get('/get-resutls-themes-by-years', [\App\Http\Controllers\Admin\ResultQuest::class, 'getThemesByYears'])
+        ->name('result-quest.get-themes-by-years');
 });
