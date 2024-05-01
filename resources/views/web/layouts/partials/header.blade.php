@@ -1,5 +1,15 @@
 <!-- Header
     ============================================= -->
+<?php
+    $currentResults = '';
+    $currentHome = '';
+
+    if(strpos(Route::current()->uri(), 'oposiciones-guardia-civil') !== FALSE){
+        $currentResults = 'current';
+    } else {
+        $currentHome = 'current';
+    }
+?>
 <header id="header">
     <div id="header-wrap">
         <div class="container">
@@ -22,11 +32,9 @@
                 <!-- Primary Navigation
                 ============================================= -->
                 <nav class="primary-menu style-3 menu-spacing-margin">
-
                     <ul class="menu-container">
-                        <li class="menu-item current"><a class="menu-link" href="demo-medical.html"><div>Home</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href=""><div>Resultados</div></a></li>
-                        <li class="menu-item"><a class="menu-link" href=""><div>Contacto</div></a></li>
+                        <li class="menu-item <?php echo $currentHome;?>"><a class="menu-link" href="{{ route('home.index') }}"><div>Home</div></a></li>
+                        <li class="menu-item <?php echo $currentResults;?>"><a class="menu-link" href="{{ route('results.index') }}"><div>Resultados</div></a></li>
                     </ul>
 
                 </nav><!-- #primary-menu end -->

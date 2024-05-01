@@ -28,7 +28,7 @@
 
     <!-- Content
     ============================================= -->
-    <section id="content">
+    <section id="content" style="margin-bottom: -143px;">
         <div class="content-wrap">
             @if(isset($years))
                 <div class="container">
@@ -38,10 +38,10 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="feature-box fbox-plain">
                                     <div class="fbox-icon" data-animate="bounceIn">
-                                        <a href="#"><img src="{{ Voyager::image('fav.png') }}" title="Resultados test oposciones guardia civil {{$year->year}}" alt="Resultados test oposciones guardia civil {{$year->year}}"></a>
+                                        <a href="{{ route('results.getResultsThemeByYear', ['year' => $year->year]) }}"><img src="{{ Voyager::image('fav.png') }}" title="Resultados test oposciones guardia civil {{$year->year}}" alt="Resultados test oposciones guardia civil {{$year->year}}"></a>
                                     </div>
                                     <div class="fbox-content">
-                                        <h3>Resultados test oposciones guardia civil {{$year->year}}</h3>
+                                        <h3><a href="{{ route('results.getResultsThemeByYear', ['year' => $year->year]) }}"> Resultados test oposciones guardia civil {{$year->year}}</a></h3>
                                         <p>Entra y encuentra los reusultados de las preguntas de las oposciones a la guardia civil del año {{ $year->year }}.</p>
                                     </div>
                                 </div>
@@ -76,24 +76,24 @@
 
                         </div>
 
-                        <div class="widget subscribe-widget">
+                        <div class="widget subscribe-widget" style="margin-top: 16px;">
 
                             <div class="row col-mb-30">
-                                <div class="col-sm-4 col-md-12 col-lg-4">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-4">
                                     <a href="https://www.facebook.com/profile.php?id=61553762043690" target="_blank" class="social-icon bg-contrast-200 h-bg-facebook mb-0 me-3">
                                         <i class="fa-brands fa-facebook-f"></i>
                                         <i class="fa-brands fa-facebook-f"></i>
                                     </a>
                                     <a href="https://www.facebook.com/profile.php?id=61553762043690" target="_blank"></a>
                                 </div>
-                                <div class="col-sm-4 col-md-12 col-lg-4">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-4">
                                     <a href="https://www.instagram.com/royal_emeritum/" target="_blank" class="social-icon bg-contrast-200 h-bg-instagram mb-0 me-3">
                                         <i class="fa-brands fa-instagram"></i>
                                         <i class="fa-brands fa-instagram"></i>
                                     </a>
                                     <a href="https://www.instagram.com/royal_emeritum/" target="_blank"></a>
                                 </div>
-                                <div class="col-sm-4 col-md-12 col-lg-4">
+                                <div class="col-4 col-sm-4 col-md-4 col-lg-4">
                                     <a href="https://www.tiktok.com/@royal.emeritum" target="_blank" class="social-icon bg-contrast-200 h-bg-tiktok mb-0 me-3">
                                         <i class="fa-brands fa-tiktok"></i>
                                         <i class="fa-brands fa-tiktok"></i>
@@ -110,7 +110,8 @@
                     <div class="bg-color form-widget col-padding" data-loader="button">
                         <h2>Cuéntanos tus dudas</h2>
                         <div class="form-result"></div>
-                        <form class="row mb-0" id="template-medical-form" name="template-medical-form" action="include/form.php" method="post">
+                        <form class="row mb-0" action="{{ route('contact.sendContact') }}" id="template-medical-form" name="template-medical-form" method="post">
+                            @csrf
                             <div class="form-process">
                                 <div class="css3-spinner">
                                     <div class="css3-spinner-scaler"></div>
@@ -118,21 +119,33 @@
                             </div>
                             <div class="col-md-8 form-group">
                                 <label for="template-medical-name">Nombre:</label>
-                                <input type="text" id="template-medical-name" name="template-medical-name" class="form-control not-dark required" value="">
+                                <input type="text" id="name" name="name" class="form-control not-dark required" value="">
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-md-4 form-group">
                                 <label for="template-medical-phone">Teléfono:</label>
-                                <input type="text" id="template-medical-phone" name="template-medical-phone" class="form-control not-dark required" value="">
+                                <input type="tel" id="phone" name="phone" class="form-control not-dark required" value="">
+                                @error('phone')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12 form-group">
                                 <label for="template-medical-email">Email:</label>
-                                <input type="email" id="template-medical-email" name="template-medical-email" class="form-control not-dark required" value="">
+                                <input type="email" id="email" name="email" class="form-control not-dark required" value="">
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="w-100"></div>
                             <div class="col-md-12 form-group">
                                 <label for="template-medical-message">Mensaje:</label>
-                                <textarea id="template-medical-message" name="template-medical-message" class="form-control not-dark required" cols="30" rows="5"></textarea>
+                                <textarea id="message" name="message" class="form-control not-dark required" cols="30" rows="5"></textarea>
+                                @error('message')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="w-100"></div>
                             <div class="col-12 form-group d-none">

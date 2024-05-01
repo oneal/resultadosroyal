@@ -161,6 +161,7 @@
         }
 
         $('document').ready(function () {
+            getThemeByYear($('[name="year_id"]').val());
             $('.toggleswitch').bootstrapToggle();
 
             //Init datepicker for date fields if data-datepicker attribute defined
@@ -212,9 +213,10 @@
 
         });
 
-        $('[name="year_id"]').on('change',function () {
+        function getThemeByYear(yearId)
+        {
             var data = {
-                year_id : $(this).val()
+                year_id : yearId
             }
 
             $.ajax({
@@ -228,6 +230,10 @@
                     alert('Disculpe, existió un problema');
                 }
             });
+        }
+
+        $('[name="year_id"]').on('change',function () {
+            getThemeByYear($(this).val());
         });
     </script>
 @stop

@@ -14,7 +14,7 @@
 
                 <div class="col-md-6 text-center text-md-end">
                     <div class="copyrights-menu copyright-links">
-                        <a href="#">Home</a>/<a href="#">Resultados</a>/<a href="#">Contact</a>
+                        <a href="{{ route('home.index') }}">Home</a>/<a href="{{ route('results.index') }}">Resultados</a>
                     </div>
                 </div>
             </div>

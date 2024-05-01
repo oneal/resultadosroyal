@@ -16,6 +16,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\Web\Home::class, 'index'])
 ->name('home.index');
 
+Route::get('/oposiciones-guardia-civil', [\App\Http\Controllers\Web\Result::class, 'index'])
+    ->name('results.index');
+
+Route::post('/send-contact', [\App\Http\Controllers\Web\Contact::class, 'sendContact'])
+    ->name('contact.sendContact');
+
+Route::get('/oposiciones-guardia-civil/{year}', [\App\Http\Controllers\Web\Result::class, 'getResultsThemeByYear'])
+    ->name('results.getResultsThemeByYear');
+
+Route::get('/oposiciones-guardia-civil/{year}/{theme}', [\App\Http\Controllers\Web\Result::class, 'getResultsQuestByTheme'])
+    ->name('results.getResultsQuestByTheme');
+
 Route::get('/aviso-legal', function (){
     return view('web.legal-warning');
 })->name('home.legal.warning');
