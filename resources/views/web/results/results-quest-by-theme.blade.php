@@ -29,14 +29,11 @@
                                 </div>
                                 <hr/>
                                 <div class="accordion-title">
-                                    {{$quest->quest}}
+                                    {!! $quest->quest !!}
                                 </div>
                             </div>
                             <div class="accordion-content">
-                                <p>{{$quest->description}}</p>
-                                @if(isset($quest->img))
-                                    <img src="{{ Voyager::image($quest->img) }}" alt="{{ $quest->quest }}" style="max-width: 500px"/>
-                                @endif
+                                {!!  $quest->description !!}
                             </div>
                         @endforeach
                     </div>
@@ -46,4 +43,13 @@
          @endif
     </div>
 </section>
+@endsection
+
+@section('javascript')
+    <script>
+        $(document).ready(function() {
+            $("div").removeClass("accordion-active")
+            $('.accordion-content').css('display', 'none')
+        });
+    </script>
 @endsection

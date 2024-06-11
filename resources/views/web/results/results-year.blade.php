@@ -23,7 +23,7 @@
                             <div class="feature-box fbox-plain">
                                 <div class="fbox-icon" data-animate="bounceIn">
                                     <a href="{{ route('results.getResultsThemeByYear', ['year' => $year->year]) }}">
-                                        <img src="{{ Voyager::image('fav.png') }}" title="Resultados test oposciones guardia civil {{$year->year}}" alt="Resultados test oposciones guardia civil {{$year->year}}">
+                                        <img src="@if(isset($year->img) && $year->img !== ''){{ Voyager::image($year->img) }}@else{{ Voyager::image('fav.png') }}@endif" title="Resultados test oposciones guardia civil {{$year->year}}" alt="Resultados test oposciones guardia civil {{$year->year}}">
                                     </a>
                                 </div>
                                 <div class="fbox-content">

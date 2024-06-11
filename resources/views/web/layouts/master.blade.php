@@ -47,6 +47,7 @@
 ============================================= -->
 <script src="{{ asset('js/plugins.min.js') }}"></script>
 <script src="{{ asset('js/functions.bundle.js') }}"></script>
-
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+@yield('javascript')
 </body>
 </html>
